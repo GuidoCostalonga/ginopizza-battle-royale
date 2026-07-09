@@ -1,14 +1,13 @@
 # 🍕 Ginopizza Battle Royale 🍕
 
+### ▶️ Gioca ora: **https://ginopizza.github.io/ginopizza-battle-royale/**
+
 Un gioco arcade **battle royale** top-down, colorato e caotico, giocabile direttamente dal browser.
 Scegli il tuo personaggio "brainrot", vieni lanciato nell'arena con **20 bot intelligenti** e cerca di
 restare l'ultimo in vita! Pensato per essere veloce, assurdo, ironico e super condivisibile.
 
 Realizzato con **HTML5 + CSS3 + JavaScript** e il motore **Phaser 3** (unica dipendenza, caricata da CDN).
 Nessun asset esterno: tutta la grafica è generata via codice usando forme, colori ed emoji.
-
-> ⚠️ Nota: questa cartella contiene anche un altro progetto (l'app Android *Berlino Transit*).
-> Il gioco vive nei file `index.html`, `style.css`, `main.js` ed è totalmente indipendente da esso.
 
 ---
 
