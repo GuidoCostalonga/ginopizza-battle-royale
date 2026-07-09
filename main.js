@@ -787,6 +787,12 @@ class GameScene extends Phaser.Scene {
     this.physics.world.setBounds(0, 0, WORLD, WORLD);
 
     // --- Stato della partita ---
+    // IMPORTANTE: Phaser riusa la stessa istanza di scena a ogni restart,
+    // quindi azzeriamo esplicitamente tutto lo stato (incluso il gruppo _fg,
+    // altrimenti alla 2ª partita punterebbe a oggetti già distrutti).
+    this._fg = null;
+    this.discoBg = false;
+    this._lastZoneTick = -1;
     this.fighters = [];
     this.powerups = [];
     this.projectiles = [];
