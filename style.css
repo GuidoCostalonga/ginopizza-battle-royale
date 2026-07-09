@@ -1,0 +1,119 @@
+/* ============================================================
+   Ginopizza Battle Royale — Stili globali
+   Solo layout della pagina e controlli mobile.
+   Tutta la grafica di gioco è generata via codice in Phaser.
+   ============================================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #12002e;
+  font-family: 'Comic Sans MS', 'Segoe UI', system-ui, sans-serif;
+  touch-action: none;
+}
+
+#game-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Il canvas di Phaser viene scalato mantenendo le proporzioni */
+#game-container canvas {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  image-rendering: auto;
+  box-shadow: 0 0 60px rgba(255, 0, 200, 0.4);
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ---------------------- Controlli mobile ---------------------- */
+#mobile-controls {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+}
+
+#joystick-zone {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 45%;
+  height: 45%;
+  pointer-events: auto;
+}
+
+#joystick-base {
+  position: absolute;
+  left: 30px;
+  bottom: 30px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  border: 3px solid rgba(255, 255, 255, 0.35);
+  touch-action: none;
+}
+
+#joystick-thumb {
+  position: absolute;
+  left: 35px;
+  top: 35px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(255, 80, 200, 0.8);
+  border: 3px solid #fff;
+  transition: transform 0.05s linear;
+}
+
+#action-buttons {
+  position: absolute;
+  right: 30px;
+  bottom: 40px;
+  display: flex;
+  gap: 18px;
+  align-items: flex-end;
+  pointer-events: auto;
+}
+
+.action-btn {
+  width: 82px;
+  height: 82px;
+  border-radius: 50%;
+  border: 4px solid #fff;
+  background: rgba(255, 90, 90, 0.85);
+  font-size: 34px;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.3);
+  pointer-events: auto;
+}
+
+.action-btn:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+}
+
+.action-btn.special {
+  width: 96px;
+  height: 96px;
+  font-size: 40px;
+  background: rgba(120, 90, 255, 0.9);
+}

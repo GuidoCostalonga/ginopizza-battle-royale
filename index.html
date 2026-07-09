@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>🍕 Ginopizza Battle Royale 🍕</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Phaser 3 caricato da CDN: unica dipendenza esterna -->
+  <script src="https://cdn.jsdelivr.net/npm/phaser@3.80.1/dist/phaser.min.js"></script>
+</head>
+<body>
+  <!-- Contenitore del gioco: Phaser inietta qui il canvas -->
+  <div id="game-container"></div>
+
+  <!-- Controlli mobile (joystick + pulsanti) mostrati solo su touch -->
+  <div id="mobile-controls" class="hidden">
+    <div id="joystick-zone">
+      <div id="joystick-base">
+        <div id="joystick-thumb"></div>
+      </div>
+    </div>
+    <div id="action-buttons">
+      <button id="btn-attack" class="action-btn">👊</button>
+      <button id="btn-special" class="action-btn special">✨</button>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
