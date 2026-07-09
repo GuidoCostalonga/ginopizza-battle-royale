@@ -23,6 +23,10 @@ const MATCH_BOTS = 20;              // Numero di bot => 21 combattenti totali
 const ZONE_SHRINK_TIME = 150;       // Secondi entro cui la zona si restringe del tutto
 const EVENT_INTERVAL = 30000;       // Evento assurdo ogni 30 secondi
 
+// Moltiplicatore globale del ritmo di gioco: abbassalo per rallentare tutto
+// (movimento, scatti, proiettili). 1 = velocità piena, 0.7 = 30% più lento.
+const GAME_SPEED = 0.7;
+
 // --- Personaggi giocabili -------------------------------------------------
 // Ogni personaggio ha: id, nome, emoji, colore, velocità, vita, potere e frase meme.
 const CHARACTERS = [
@@ -171,7 +175,7 @@ class Fighter {
     // Statistiche
     this.maxHp = charDef.hp;
     this.hp = charDef.hp;
-    this.baseSpeed = charDef.speed;
+    this.baseSpeed = charDef.speed * GAME_SPEED;
     this.kills = 0;
 
     // Sprite fisico (disco colorato generato via texture)
@@ -337,7 +341,7 @@ class Fighter {
         const base = Math.atan2(this.facing.y, this.facing.x);
         for (let i = -1; i <= 1; i++) {
           const a = base + i * 0.32;
-          s.spawnProjectile(this, this.x, this.y, Math.cos(a) * 460, Math.sin(a) * 460, 20, '🍕', 1400);
+          s.spawnProjectile(this, this.x, this.y, Math.cos(a) * 460 * GAME_SPEED, Math.sin(a) * 460 * GAME_SPEED, 20, '🍕', 1400);
         }
         break;
       }
@@ -374,8 +378,8 @@ class Fighter {
 
   // Scatto che danneggia i nemici attraversati (usato da dash/charge)
   dashAttack(power, dmg, duration, stun = false) {
-    const vx = this.facing.x * power;
-    const vy = this.facing.y * power;
+    const vx = this.facing.x * power * GAME_SPEED;
+    const vy = this.facing.y * power * GAME_SPEED;
     this.sprite.setVelocity(vx, vy);
     this.dashUntil = this.scene.time.now + duration * 1000;
     this.dashDmg = dmg;
@@ -1042,7 +1046,7 @@ class GameScene extends Phaser.Scene {
   spawnBomb(owner) {
     // La bomba meme vola in avanti e poi esplode ad area
     const x = owner.x, y = owner.y;
-    const vx = owner.facing.x * 350, vy = owner.facing.y * 350;
+    const vx = owner.facing.x * 350 * GAME_SPEED, vy = owner.facing.y * 350 * GAME_SPEED;
     const t = this.add.text(x, y, '💣', { fontSize: '30px' }).setOrigin(0.5).setDepth(6);
     this.projectiles.push({ owner, x, y, vx, vy, dmg: 0, life: 800, obj: t, hitSet: new Set(), explodeOnEnd: 55 });
   }
